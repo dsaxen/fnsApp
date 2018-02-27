@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+<h2>Verkkokauppa</h2>
+
+{% block content %}
+<div class = "firstline">
+  {% if error%}
+  <p> <b>{{ error }}</b> </p>
+    {% endif %}
+
+</div>
+{% if searchQuery %}
+    <div>
+    <p id = "matches">Hakutulokset</p>
+    <div class="dropdown">
+        <button class = "sortButton">Järjestä</button>
+        <div class="dropdown-content">
+            <button class = "dropdownButton" id = "nameSortButton">Tuotenimen mukaan</button>
+            <button class = "dropdownButton" id = "codeSortButton">Tuotekoodin mukaan</button>
+        </div>
+    </div>
+{% endif %}
+<div class = "productContainer">
+    {% for productId, productName, productPrice in products %}
+        <div class = "products">
+            <span id = "productCode">{{productId}}</span>
+            <br><br>
+            <span id = "productName">{{productName}}</span>
+            <br><br>
+            <span id = "productPrice">{{productPrice}}</span>
+            <button class = "addButton">Lisää tuote ostokoriin</button>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

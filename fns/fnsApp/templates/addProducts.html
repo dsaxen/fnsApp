@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h3>Lisää tuotteita</h3>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="productCode" id="codeLabel">Tuotekoodi:</label>
+        <input type="number" name="productCode" value="" min="0" id="productCodeField" >
+        <br>
+        <label for="productName" id="nameLabel">Tuotenimi:</label>
+        <input type="text" name="productName" value="" id="productNameField">
+        <br>
+        <label for="productPrice" id="priceLabel">Tuotehinta:</label>
+        <input type="number" step="0.01" name="productPrice" value=""  min="0" id="productPriceField">
+        
+        <input type="submit" value="Lisää tuote tietokantaan" id="submitProduct">
+    </form>
+</div>
+{% endblock %}
